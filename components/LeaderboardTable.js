@@ -22,7 +22,7 @@ export default function LeaderboardTable({ leaderboard }) {
     }
 
     players.sort((a, b) => {
-        return b.Demolitions - a.Demolitions;
+        return b.Démolitions - a.Démolitions;
     })
 
     let i = 1;
@@ -42,11 +42,11 @@ export default function LeaderboardTable({ leaderboard }) {
 
     let columns = [
         {
-            title: 'Name',
+            title: 'Nom',
             field: 'Name',
         },
         {
-            title: 'Demolitions',
+            title: 'Démolitions',
             field: 'Demolitions',
             defaultSort: 'desc',
             render: (data) => {
@@ -54,7 +54,7 @@ export default function LeaderboardTable({ leaderboard }) {
             }
         },
         {
-            title: 'Demolitions Rank',
+            title: 'Démolitions Rang',
             field: 'DemolitionsRank',
             defaultSort: 'asc'
         },
@@ -67,16 +67,16 @@ export default function LeaderboardTable({ leaderboard }) {
             }
         },
         {
-            title: 'Exterminations Rank',
+            title: 'Exterminations Rang',
             field: 'ExterminationsRank',
             defaultSort: 'asc'
         },
         {
-            title: 'Country',
+            title: 'Pays',
             field: 'Country'
         },
         {
-            title: 'Last Update',
+            title: 'dernière mise à jour',
             field: 'Last Update',
             defaultSort: 'asc'
         },
