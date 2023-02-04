@@ -6,17 +6,17 @@ export default function LeaderboardTable({ leaderboard }) {
     let players = []
     for (let player in leaderboard) {
         let playerData = leaderboard[player];
-        let date = new Date(playerData["Dernière mise à jour"]);
+        let date = new Date(playerData["LastUpdate"]);
         let dateString = date.toLocaleDateString();
         let playerDemos = parseInt(playerData["Demolitions"]);
         let playerExterms = parseInt(playerData["Exterminations"]);
         let newPlayer = {
-            "Nom": playerData["Name"],
+            "Name": playerData["Name"],
             "Demolitions": playerDemos,
             "Exterminations": playerExterms,
-            "Dernière mise à jour": dateString,
-            "Pays": playerData.Country,
-            "Historique": playerData.History
+            "Last Update": dateString,
+            "Country": playerData.Country,
+            "History": playerData.History
         }
         players.push(newPlayer);
     }
@@ -42,20 +42,20 @@ export default function LeaderboardTable({ leaderboard }) {
 
     let columns = [
         {
-            title: 'Nom',
-            field: 'Nom',
+            title: 'Name',
+            field: 'Name',
         },
         {
-            title: 'Démolitions',
-            field: 'Démolitions',
+            title: 'Demolitions',
+            field: 'Demolitions',
             defaultSort: 'desc',
             render: (data) => {
                 return data.Demolitions.toLocaleString();
             }
         },
         {
-            title: 'Rang démolitions',
-            field: 'Rang démolitions',
+            title: 'Demolitions Rank',
+            field: 'DemolitionsRank',
             defaultSort: 'asc'
         },
         {
@@ -67,25 +67,25 @@ export default function LeaderboardTable({ leaderboard }) {
             }
         },
         {
-            title: 'Rang exterminations',
-            field: 'Rang exterminations',
+            title: 'Exterminations Rank',
+            field: 'ExterminationsRank',
             defaultSort: 'asc'
         },
         {
-            title: 'Pays',
-            field: 'Pays'
+            title: 'Country',
+            field: 'Country'
         },
         {
-            title: 'Dernière mise à jour',
-            field: 'Dernière mise à jour',
+            title: 'Last Update',
+            field: 'Last Update',
             defaultSort: 'asc'
         },
     ];
 
     const options = {
         thirdSortClick: false,
-        idSynonym: "Nom",
-        pageSize: 50,
+        idSynonym: "Name",
+        pageSize: 25,
         pageSizeOptions: [10, 15, 25, 50, 100],
         showTitle: false,
         padding: "dense",
@@ -95,16 +95,16 @@ export default function LeaderboardTable({ leaderboard }) {
         rowStyle: (data, index, level) => {
             if (index % 2 == 0) {
                 return {
-                    backgroundColor: "#fffff",
+                    backgroundColor: "#FFFFFF",
                 }
             } else {
                 return {
-                    backgroundColor: "#e8e8e8",
+                    backgroundColor: "#F8F8F8",
                 }
             }
         },
         headerStyle: {
-            backgroundColor: '#e8e8e8',
+            backgroundColor: '#F8F8F8',
         },
         detailPanelType: "single",
         columnsButton: true,
@@ -112,7 +112,7 @@ export default function LeaderboardTable({ leaderboard }) {
     };
 
     return <MaterialTable
-        title={"Classement des démolitions francophones"}
+        title={"Demolition Leaderboard"}
         data={players}
         columns={columns}
         options={options}
